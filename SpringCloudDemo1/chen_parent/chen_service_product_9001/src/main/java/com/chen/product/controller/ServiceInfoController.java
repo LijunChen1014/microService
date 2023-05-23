@@ -14,6 +14,11 @@ public class ServiceInfoController {
     private String port;
     @GetMapping("/port")
     public String getPort() {
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return port;
     }
 }

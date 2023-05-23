@@ -20,3 +20,27 @@ eureka:
     prefer-ip-address: true
 #自定义实例显示格式，加上版本号，便于多版本管理，注意是ip-address，早期版本是ipAddress
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+
+#针对的被调用方微服务名称,不加就是全局生效
+chen-service-product:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #随机策略
+# springboot中暴露健康检查等断点接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# 暴露健康接口的细节
+  endpoint:
+    health:
+      show-details: always
+
+#hystrix:
+#  threadpool:
+#    default:
+#      coreSize: 10 #并发执行的最大线程数，默认10
+#      maxQueueSize: 1000 #BlockingQueue的最大队列数，默认值-1
+#      queueSizeRejectionThreshold: 1500 #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝，默认值5
+
+# queueSizeRejectionThreshold,maxQueueSize 需要同时设置
