@@ -1,0 +1,28 @@
+server:
+  port: 9001 # 后期该微服务多实例，9000（10个以内）
+Spring:
+  application:
+    name: chen-service-product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.179.128:3306/ms?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: ChenLijun@666
+
+eureka:
+  client:
+    serviceUrl: # eureka server的路径
+      defaultZone: http://localhost:9200/eureka/
+    registry-fetch-interval-seconds: 30 #从Eureka server中拉取服务的时间间隔
+  instance:
+#使用ip注册，否则会使用主机名注册了（此处考虑到对老版本的兼容，新版本经过实验都是ip）
+    prefer-ip-address: true
+#自定义实例显示格式，加上版本号，便于多版本管理，注意是ip-address，早期版本是ipAddress
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+    metadata-map:  #自定义元数据，会和标准元数据一起注册到服务注册中心，可以被注册中心所有的Client获取
+      name: Chen
+      age: 20
+      master: CN
+      password: 123
+    lease-renewal-interval-in-seconds: 30 #续约间隔 30s
+    lease-expiration-duration-in-seconds: 90 #从注册中心剔除的时间

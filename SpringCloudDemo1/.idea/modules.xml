@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SpringCloudDemo1.iml" filepath="$PROJECT_DIR$/SpringCloudDemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_cloud_eurake/chen_cloud_eurake.iml" filepath="$PROJECT_DIR$/chen_parent/chen_cloud_eurake/chen_cloud_eurake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_cloud_eurake_9201/chen_cloud_eurake_9201.iml" filepath="$PROJECT_DIR$/chen_parent/chen_cloud_eurake_9201/chen_cloud_eurake_9201.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_parent.iml" filepath="$PROJECT_DIR$/chen_parent/chen_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_service_common/chen_service_common.iml" filepath="$PROJECT_DIR$/chen_parent/chen_service_common/chen_service_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_service_page/chen_service_page.iml" filepath="$PROJECT_DIR$/chen_parent/chen_service_page/chen_service_page.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_service_product _9001/chen_service_product.iml" filepath="$PROJECT_DIR$/chen_parent/chen_service_product _9001/chen_service_product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_service_product_9000/chen_service_product_9000.iml" filepath="$PROJECT_DIR$/chen_parent/chen_service_product_9000/chen_service_product_9000.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chen_parent/chen_service_product_9001/chen_service_product_9001.iml" filepath="$PROJECT_DIR$/chen_parent/chen_service_product_9001/chen_service_product_9001.iml" />
+    </modules>
+  </component>
+</project>

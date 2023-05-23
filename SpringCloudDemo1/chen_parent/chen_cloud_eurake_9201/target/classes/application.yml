@@ -1,0 +1,13 @@
+server:
+  port: 9201 # 后期该微服务多实例，端口从9100递增（10个以内）
+Spring:
+  application:
+    name: chen_cloud_eurake_9201
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url: # 客户端与EurekaServer交互的地址，如果是集群，也需要写其它Server的地址
+      defaultZone: http://LagouCloudEurekaServerA:9200/eureka/,http://LagouCloudEurekaServerB:9201/eureka/
+    register-with-eureka: true # 是否向eurake中心注册自己的信息，如果自己就是服务不需要注册自己,默认为true
+    fetch-registry: true #是否拉取Eureka Server服务注册列表,默认为true，置为false
