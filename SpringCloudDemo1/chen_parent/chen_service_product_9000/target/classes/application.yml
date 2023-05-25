@@ -26,3 +26,4 @@ eureka:
       password: 123
     lease-renewal-interval-in-seconds: 30 #续约间隔 30s
     lease-expiration-duration-in-seconds: 90 #从注册中心剔除的时间
+

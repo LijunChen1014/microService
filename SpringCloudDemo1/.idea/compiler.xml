@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="chen_cloud_gateway" />
         <module name="chen_cloud_eurake" />
         <module name="chen_cloud_eurake_9201" />
         <module name="chen_service_product_9000" />
@@ -19,6 +20,7 @@
     <bytecodeTargetLevel>
       <module name="chen_cloud_eurake" target="11" />
       <module name="chen_cloud_eurake_9201" target="11" />
+      <module name="chen_cloud_gateway" target="11" />
       <module name="chen_parent" target="11" />
       <module name="chen_service_common" target="11" />
       <module name="chen_service_page" target="11" />
@@ -31,6 +33,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chen_cloud_eurake" options="-parameters" />
       <module name="chen_cloud_eurake_9201" options="-parameters" />
+      <module name="chen_cloud_gateway" options="-parameters" />
       <module name="chen_parent" options="" />
       <module name="chen_service_common" options="-parameters" />
       <module name="chen_service_page" options="-parameters" />

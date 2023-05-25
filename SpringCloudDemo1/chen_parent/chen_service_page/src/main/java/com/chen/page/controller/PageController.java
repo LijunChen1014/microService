@@ -3,6 +3,7 @@ package com.chen.page.controller;
 
 import com.chen.common.pojo.Products;
 
+import com.chen.page.feign.ProductFeign;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,26 +20,41 @@ import java.util.List;
 @RestController
 @RequestMapping("/page")
 public class PageController {
-    @Autowired
-    private RestTemplate restTemplate;
-    //服务注册中心的客户端对象
-    @Autowired
-    private DiscoveryClient discoveryClient;
+//    @Autowired
+//    private RestTemplate restTemplate;
+//    //服务注册中心的客户端对象
+//    @Autowired
+//    private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private ProductFeign productFeign;
     @GetMapping("/getProduct/{id}")
     public Products getProduct(@PathVariable Integer id){
-//        //获得lagou_service_product在服务注册中心的服务列表
-//        List<ServiceInstance> instances = discoveryClient.getInstances("chen-service-product");
-//        //2.获得实例集合中的第一个
-//        ServiceInstance instance = instances.get(0);
-//        String host = instance.getHost();
-//        int port = instance.getPort();   #只有一个service-product时 使用
-        //拼接url
-        String url = "http://chen-service-product/product/query/"+id;
-        //发送Http给商品微服务，将id传递过去，获取到id所对应的products对象
-
-        return restTemplate.getForObject(url,Products.class);
+        return productFeign.queryById(id);
     }
+
+    @GetMapping("/loadProductPort")
+    public String getProductServerPort(){
+        return productFeign.getPort();
+    }
+
+
+//restTemplate 请求方式
+//    @GetMapping("/getProduct/{id}")
+//    public Products getProduct(@PathVariable Integer id){
+////        //获得lagou_service_product在服务注册中心的服务列表
+////        List<ServiceInstance> instances = discoveryClient.getInstances("chen-service-product");
+////        //2.获得实例集合中的第一个
+////        ServiceInstance instance = instances.get(0);
+////        String host = instance.getHost();
+////        int port = instance.getPort();   #只有一个service-product时 使用
+//        //拼接url
+//        String url = "http://chen-service-product/product/query/"+id;
+//        //发送Http给商品微服务，将id传递过去，获取到id所对应的products对象
+//
+//        return restTemplate.getForObject(url,Products.class);
+//    }
+
     @HystrixCommand(
             // 线程池标识，要保持唯一，不唯一的话就共用了
             //只要在@HystrixCommand中定义了threadPoolKey，就意味着开启了舱壁模式（线程隔离），该方法就会自己维护一个线程池
@@ -55,14 +71,15 @@ public class PageController {
                             "2000") //设置请求的超时时间，一旦请求超过此时间那么都按照超时处理
             }
     )
-    @GetMapping("/loadProductPort")
-    public String getProductServerPort(){
+    @GetMapping("/loadProductPort2")
+    public String getProductServerPort2(){
 //        ServiceInstance serviceInstance = discoveryClient.getInstances("chen-service-product").get(0);
 //        String host = serviceInstance.getHost();
 //        int port = serviceInstance.getPort(); //因为chen-service-product是集群，要实现负载均衡，就不需要获取host
-        String url = "http://chen-service-product/service/port";
-        String result = restTemplate.getForObject(url,String.class);
-        return result;
+//        String url = "http://chen-service-product/service/port";
+//        String result = restTemplate.getForObject(url,String.class);
+//        return result;
+        return productFeign.getPort();
 
     }
 
@@ -82,14 +99,13 @@ public class PageController {
             },
             fallbackMethod = "getProductServerPortFallBack"
     )
-
     @GetMapping("/loadProductPort3")
     public String getProductServerPort3(){
 
-        String url = "http://chen-service-product/service/port";
-        String result = restTemplate.getForObject(url,String.class);
-        return result;
-
+//        String url = "http://chen-service-product/service/port";
+//        String result = restTemplate.getForObject(url,String.class);
+//        return result;
+        return productFeign.getPort();
     }
 
     /**

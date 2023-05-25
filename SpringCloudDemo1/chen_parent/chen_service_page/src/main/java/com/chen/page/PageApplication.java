@@ -8,13 +8,15 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 //@EnableEurekaClient
 @EnableDiscoveryClient //将当前项目表示为注册中心的客户端，向注册中心注册，可以在所有服务注册中心环境下使用，如Nacos 等
-@EnableCircuitBreaker //启用熔断服务
+//@EnableCircuitBreaker //启用熔断服务
+@EnableFeignClients
 public class PageApplication {
     public static void main(String[] args) {
         SpringApplication.run(PageApplication.class,args);
