@@ -15,6 +15,7 @@
         <module>chen_cloud_eurake</module>
         <module>chen_cloud_eurake_9201</module>
       <module>chen_service_product_9001</module>
+        <module>chen_cloud_config</module>
 
     </modules>
 

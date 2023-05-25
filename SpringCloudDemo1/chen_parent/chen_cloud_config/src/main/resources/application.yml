@@ -1,0 +1,23 @@
+server:
+  port: 9400
+#注册到Eureka服务中心
+eureka:
+  client:
+    service-url: defaultZone:http://LagouCloudEurekaServerA:9200/eureka,http://LagouCloudEurekaServerB:9201/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+spring:
+  application:
+    name: lagou-service-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jetwu-do/lagou-config.git #配置git服务地址
+          username: jetwu-do #配置git用户名
+          password: wu7787879 #配置git密码
+          search-paths:
+          - lagou-config
+      # 读取分支
+      label: master

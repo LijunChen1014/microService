@@ -15,9 +15,11 @@
         <module name="chen_service_product" />
         <module name="chen_service_common" />
         <module name="chen_service_page" />
+        <module name="chen_cloud_config" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="chen_cloud_config" target="11" />
       <module name="chen_cloud_eurake" target="11" />
       <module name="chen_cloud_eurake_9201" target="11" />
       <module name="chen_cloud_gateway" target="11" />
@@ -31,10 +33,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="chen_cloud_config" options="-parameters" />
       <module name="chen_cloud_eurake" options="-parameters" />
       <module name="chen_cloud_eurake_9201" options="-parameters" />
       <module name="chen_cloud_gateway" options="-parameters" />
-      <module name="chen_parent" options="" />
+      <module name="chen_parent" options="-parameters" />
       <module name="chen_service_common" options="-parameters" />
       <module name="chen_service_page" options="-parameters" />
       <module name="chen_service_product" options="-parameters" />
